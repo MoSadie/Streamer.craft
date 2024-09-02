@@ -4,7 +4,7 @@ Trigger Streamer.bot Actions from inside Minecraft!
 
 ## Setup guide
 
-A video explaining how to set this all up is coming soon, but here are some instructions in the meantime.
+Video setup guide: https://youtu.be/-GzuuOlfyGE
 
 ### Step 1: Install the mod
 
