@@ -249,7 +249,7 @@ public final class StreamerCraft {
         // Open a Book GUI that shows all available actions
         // The player can select an action to do
 
-        Minecraft.getInstance().player.sendSystemMessage(Component.literal("[SC] Available Actions:").withStyle(ChatFormatting.GREEN));
+        Minecraft.getInstance().player.displayClientMessage(Component.literal("[SC] Available Actions:").withStyle(ChatFormatting.GREEN), false);
 
         for (Action action : actions) {
             MutableComponent header = Component.literal("--- " + action.name + " ---").withStyle(ChatFormatting.BLUE, ChatFormatting.BOLD);
@@ -266,8 +266,8 @@ public final class StreamerCraft {
 
             if (Minecraft.getInstance().player != null) {
                 Minecraft.getInstance().execute(() -> {
-                    Minecraft.getInstance().player.sendSystemMessage(blankLine);
-                    Minecraft.getInstance().player.sendSystemMessage(message);
+                    Minecraft.getInstance().player.displayClientMessage(blankLine, false);
+                    Minecraft.getInstance().player.displayClientMessage(message, false);
                 });
             }
         }
