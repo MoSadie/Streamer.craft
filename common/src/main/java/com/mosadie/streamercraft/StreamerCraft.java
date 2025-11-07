@@ -253,14 +253,14 @@ public final class StreamerCraft {
 
         for (Action action : actions) {
             MutableComponent header = Component.literal("--- " + action.name + " ---").withStyle(ChatFormatting.BLUE, ChatFormatting.BOLD);
-            MutableComponent id = Component.literal(action.id).withStyle(ChatFormatting.GRAY).withStyle(Style.EMPTY.withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, action.id))).withStyle(Style.EMPTY.withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.literal("Click to copy the action ID"))));
+            MutableComponent id = Component.literal(action.id).withStyle(ChatFormatting.GRAY).withStyle(Style.EMPTY.withClickEvent(new ClickEvent.CopyToClipboard(action.id))).withStyle(Style.EMPTY.withHoverEvent(new HoverEvent.ShowText(Component.literal("Click to copy the action ID"))));
 
             MutableComponent blankLine = Component.literal("\n");
 
             DoAction doAction = new DoAction(action, new HashMap<>());
-            MutableComponent tellrawButton = Component.literal("[Click to copy /tellraw command]").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0x00FF00)).withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, "/tellraw @p " + doAction.getTellRawComponent())).withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.literal("Click to copy /tellraw command"))));
-            MutableComponent componentButton = Component.literal("[Click to copy Translation Component]").withStyle(Style.EMPTY.withColor(ChatFormatting.GOLD).withClickEvent(new ClickEvent(ClickEvent.Action.COPY_TO_CLIPBOARD, doAction.getTellRawComponent())).withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.literal("Click to copy the raw Translation Component JSON"))));
-            MutableComponent triggerButton = Component.literal("[Click to manually trigger]").withStyle(Style.EMPTY.withColor(ChatFormatting.RED).withClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/streamercraft do " + action.id)).withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.literal("Click to manually trigger the action"))));
+            MutableComponent tellrawButton = Component.literal("[Click to copy /tellraw command]").withStyle(Style.EMPTY.withColor(TextColor.fromRgb(0x00FF00)).withClickEvent(new ClickEvent.CopyToClipboard("/tellraw @p " + doAction.getTellRawComponent())).withHoverEvent(new HoverEvent.ShowText(Component.literal("Click to copy /tellraw command"))));
+            MutableComponent componentButton = Component.literal("[Click to copy Translation Component]").withStyle(Style.EMPTY.withColor(ChatFormatting.GOLD).withClickEvent(new ClickEvent.CopyToClipboard(doAction.getTellRawComponent())).withHoverEvent(new HoverEvent.ShowText(Component.literal("Click to copy the raw Translation Component JSON"))));
+            MutableComponent triggerButton = Component.literal("[Click to manually trigger]").withStyle(Style.EMPTY.withColor(ChatFormatting.RED).withClickEvent(new ClickEvent.SuggestCommand("/streamercraft do " + action.id)).withHoverEvent(new HoverEvent.ShowText(Component.literal("Click to manually trigger the action"))));
 
             Component message = header.append(blankLine).append(id).append(blankLine).append(blankLine).append(tellrawButton).append(blankLine).append(componentButton).append(blankLine).append(triggerButton);
 
